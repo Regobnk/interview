@@ -82,6 +82,7 @@ sudo systemctl restart httpd
 sudo wget http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 #sudo chown -R test:test wordpress
+sleep 15
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
 sudo chown -R apache:apache /var/www/html/*
