@@ -4,15 +4,15 @@ log=testlog.log
 
 #Install httpd and configure for auto start 
 sudo dnf -y update
-sudo dnf install -y httpd httpd-tools |tee -a $log
-sudo systemctl enable httpd |tee -a $log
-sudo systemctl start httpd |tee -a $log
+sudo dnf install -y httpd httpd-tools
+sudo systemctl enable httpd
+sudo systemctl start httpd
 
 
 #Configuring firewall for only port 80/443
 sudo systemctl start firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=80/tcp |tee -a $log
-sudo firewall-cmd --zone=public --permanent --add-port=443/tcp |tee -a $log
+sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 
 #Configure apache to set default error log location
@@ -82,7 +82,6 @@ sudo systemctl restart httpd
 sudo wget http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 #sudo chown -R test:test wordpress
-sleep 15
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
 sudo chown -R apache:apache /var/www/html/*
