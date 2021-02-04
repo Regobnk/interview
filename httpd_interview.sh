@@ -81,10 +81,10 @@ sudo systemctl restart httpd
 #Install WordPress, transfer files with rsync & make new directory for uploads
 sudo wget http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
-sudo chown -R test:test wordpress |tee -a $log
-sudo rsync -avP ~/wordpress/ /var/www/html/ |tee -a $log
-sudo mkdir /var/www/html/wp-content/uploads |tee -a $log
-sudo chown -R apache:apache /var/www/html/* |tee -a $log
+#sudo chown -R test:test wordpress
+sudo rsync -avP ~/wordpress/ /var/www/html/
+sudo mkdir /var/www/html/wp-content/uploads
+sudo chown -R apache:apache /var/www/html/*
 
 #Connect WordPress to database/edit config file.
 cd /var/www/html
