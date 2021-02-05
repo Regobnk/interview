@@ -19,11 +19,11 @@ sudo firewall-cmd --reload
 sudo sed -i 's/ErrorLog \"logs\/error\_log\"/ErrorLog \/var\/log\/httpd\/error\_log/' /etc/httpd/conf/httpd.conf
 
 #Possible way for logrotate to work??? Work on this as well possibly in logrotate.d/httpd
-sudo echo /var/log/httpd/error_log { >> /etc/logrotate.d/httpd
+sudo echo /var/log/httpd/error_log '{' >> /etc/logrotate.d/httpd
 sudo echo daily >> /etc/logrotate.d/httpd
 sudo echo rotate 0 >> /etc/logrotate.d/httpd
 sudo echo maxage 7 >> /etc/logrotate.d/httpd
-sudo echo } >> /etc/logrotate.d/httpd
+sudo echo '}' >> /etc/logrotate.d/httpd
 
 #Install wget
 sudo dnf -y install wget
@@ -82,7 +82,7 @@ sudo systemctl restart httpd
 sudo wget http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 #sudo chown -R test:test wordpress
-sudo rsync -avP ~/wordpress/ /var/www/html/
+sudo rsync -avP /~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
 sudo chown -R apache:apache /var/www/html/*
 
